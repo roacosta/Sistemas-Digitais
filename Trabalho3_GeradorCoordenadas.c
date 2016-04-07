@@ -8,19 +8,18 @@
 int main(){
 	int i, j,x,y;
 
-	FILE *ArquivoCoordenadas;
+	FILE *ArquivoTriangulos;
 
-	ArquivoCoordenadas = fopen("ArquivoCoordenadas.txt","w");
-
+	ArquivoTriangulos = fopen("ArquivoTriangulos.txt","w");
 
     srand(time(NULL));
 
     for (i = 0;i < 10; i++)
-        fprintf(ArquivoCoordenadas,"%d %d %d %d %d %d %d %d\n",rand() % 100,rand() % 100,rand() % 100,rand() % 100,rand() % 100,rand() % 100,rand() % 100,rand() % 100);
+        fprintf(ArquivoTriangulos,"%d %d %d %d %d %d\n",rand() % 100,rand() % 100,rand() % 100,rand() % 100,rand() % 100,rand() % 100);
 
-    fclose(ArquivoCoordenadas);
+    fclose(ArquivoTriangulos);
 
-	ArquivoCoordenadas = fopen("ArquivoCoordenadas.txt","r");
+
 
 	return 0;
 }
