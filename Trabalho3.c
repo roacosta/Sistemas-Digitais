@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 struct fPoint{
-	float x;
-	float y;
+	int x;
+	int y;
 };
 
 
@@ -15,7 +15,7 @@ float sign (struct fPoint pt, struct fPoint p1, struct fPoint p2)
 int PointInTriangle (struct fPoint pt, struct fPoint v1, struct fPoint v2, struct fPoint v3)
 {
     float b1, b2, b3;
-	int InTriangle = 0.0;
+	int InTriangle = 0;
 
     b1 = sign(pt, v1, v2);
     b2 = sign(pt, v2, v3);
@@ -38,68 +38,34 @@ int PointInTriangle (struct fPoint pt, struct fPoint v1, struct fPoint v2, struc
     return InTriangle;
 }
 
+
+
+
 int main(){
 	struct fPoint p1,p2,p3,pt;
 	int InTriangle;
 	int i, j,x,y;
- 
-	p1.x = 10;
-	p1.y = 10;
+	int cont = 0;2;
 
-	p2.x = 50;
-	p2.y = 30;
+	FILE *ArquivoCoordenadas;
+	FILE *ArquivoGerado;
 
-	p3.x = 90;
-	p3.y = 10;
+	ArquivoCoordenadas = fopen("ArquivoCoordenadas.txt","r");
+	ArquivoGerado = fopen("ArquivoGerado.txt","w");
 
-	x = 30;
-	y =  9;
+	cont = 1;
 
-	printf("\n");
-	for(i = 99; i>=0;i--){
-		
-		for(j= 0; j<100;j++){
-			pt.x = j;
-			pt.y = i;
+	while ((fscanf(ArquivoCoordenadas,"%d %d %d %d %d %d %d %d", &p1.x ,&p1.y,&p2.x,&p2.y,&p3.x,&p3.y,&pt.y,&pt.x))!= EOF ){
 
-			InTriangle = PointInTriangle (pt,p1,p2,p3); // pt é o ponto, 1,2,3 são as coordenadas do triângulo
 
-			if (pt.x == x && pt.y == y){
-				printf("P");
-			}
-			else{
-				if(pt.x == p1.x && pt.y == p1.y)
-				{
-					printf("1");
-				}
-				else
-				{
-					if(pt.x == p2.x && pt.y == p2.y)
-					{
-						printf("2");
-					}
-					else
-					{
-						if(pt.x == p3.x && pt.y == p3.y)
-						{
-							printf("3");
-						}
-						else
-						{
-							printf(" ");
-						}
-					}
-				}			
-			}
-		}
-		printf("\n");
+        //fscanf(ArquivoCoordenadas,"%d %d %d %d %d %d %d %d", &p1.x ,&p1.y,&p2.x,&p2.y,&p3.x,&p3.y,&pt.y,&pt.x);
+        InTriangle = PointInTriangle(pt,p1,p2,p3);
+        fprintf(ArquivoGerado,"%d %d %d %d %d %d %d %d %d \n", p1.x,p1.y,p2.x,p2.y,p3.x,p3.y,pt.x,pt.y,InTriangle);
+        //fprintf(ArquivoGerado,"%d %d %d %d %d %d %d %d\n", p1.x ,p1.y,p2.x,p2.y,p3.x,p3.y,pt.y,pt.x
 	}
 
-	pt.x = x;
-	pt.y = y;
-
-	InTriangle = PointInTriangle (pt,p1,p2,p3);
-	printf("\n%d\n\n",InTriangle);
+	//InTriangle = PointInTriangle (pt,p1,p2,p3);
+	//printf("\n%d\n\n",InTriangle);
 	return 0;
 }
 
