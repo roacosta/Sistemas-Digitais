@@ -118,12 +118,13 @@ module Arquivos(
                 while (!$feof(RetornoEntradas)) begin
                     Valor = $fscanf(RetornoEntradas, "%d %d %d %d %d %d",Ponto1X,Ponto1Y,Ponto2X,Ponto2Y,Ponto3X,Ponto3Y);
                 end
-                Ponto1X = 10;
-                Ponto1Y = 10;
-                Ponto2X = 10;
-                Ponto2Y = 30;
-                Ponto3X = 30;
-                Ponto3Y = 20;
+                //Ponto1X = 10;
+                //Ponto1Y = 10;
+                //Ponto2X = 10;
+                //Ponto2Y = 30;
+                //Ponto3X = 30;
+                //Ponto3Y = 20;
+                
 
 
                 Estado <= 1;
